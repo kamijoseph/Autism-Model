@@ -74,6 +74,25 @@ Autism-Model/
 
     - XGBoost Classifier
 
+### 4. Hyperparameter tuning
+Hyperparameters optimized with RandomizedSearchCV.
+
+### 5. Model Evaluation
+
+Train/test split.
+
+Metrics: Accuracy, Confusion Matrix, Precision, Recall, F1-score.
+
+Best model: Random Forest (84% accuracy).
+
+### 5. Model Persistence
+
+Models saved as .sav files.
+
+Preprocessing encoders saved as encoders.pkl.
+
+Reloaded Random Forest model used for final inference.
+
 ## ⚙️ Installation
 ### 🔐 Prerequisites
 - Python ≥ 3.10
@@ -90,7 +109,7 @@ cd Autism-Model
 ```
 2. Create a new Conda environment
 ```bash
-conda create -n Autism_Model python=3.12
+conda create -n Autism-Model python=3.12
 ```
 3. Activate the environment
 ```bash
