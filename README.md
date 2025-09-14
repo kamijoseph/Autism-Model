@@ -1,48 +1,15 @@
 # Autism Prediction using Machine Learning  
 
 ## 📌 Overview  
-This project applies supervised machine learning to predict the likelihood of **Autism Spectrum Disorder (ASD)** using behavioral and demographic features.  
+This project applies supervised machine learning to predict the likelihood of **Autism Spectrum Disorder (ASD)** based on behavioral and demographic features.  
 
-The dataset was sourced from [Kaggle](https://www.kaggle.com/). The pipeline covers **EDA, preprocessing, class imbalance handling, model training, hyperparameter tuning, evaluation, and model persistence**.  
+The dataset was sourced from [Kaggle](https://www.kaggle.com/). The pipeline covers:  
+- **EDA** (exploratory data analysis)  
+- **Preprocessing** (encoding + resampling)  
+- **Model training & hyperparameter tuning**  
+- **Evaluation & persistence**  
 
-The final deployed model is a **Random Forest Classifier**, tuned via randomized hyperparameter search and balanced using **SMOTE oversampling**.  
-
----
-
-## 📂 Project Structure  
-```bash
-
-```
----
-
-## 🔍 Workflow
-### 1. Exploratory Data Analysis (EDA)
-
-- Categorical features: visualized using countplots.
-
-- Numerical features: explored using boxplots for spread and outlier detection.
-
-- Target distribution: dataset was imbalanced, requiring oversampling.
-
-### 2. Preprocessing
-
-- Encoding: categorical features transformed using LabelEncoder (scikit-learn).
-
-- Resampling: imbalance handled using SMOTE (imblearn.over_sampling.SMOTE).
-
-### 3. Modeling
-
-- Tree-based models were selected due to their interpretability and performance on tabular data:
-    - Decision Tree Classifier
-
-    - Random Forest Classifier
-
-    - XGBoost Classifier
-
-
-# Autism Prediction using Machine Learning
-
-This project explores the use of machine learning techniques to predict autism spectrum disorder (ASD) from survey-based data available on [Kaggle](https://www.kaggle.com/). The workflow spans exploratory data analysis (EDA), preprocessing, model training, hyperparameter tuning, and evaluation. The goal was to build a reliable classifier capable of handling an imbalanced dataset.
+The final deployed model is a **Random Forest Classifier**, tuned via randomized hyperparameter search and balanced with **SMOTE oversampling**.  
 
 ---
 
@@ -73,8 +40,6 @@ Autism-Model/
 │   └── encoders.pkl
 │
 │── plots/
-│   ├── categorical_feature_countplots.png
-│   ├── numerical_feature_boxplots.png
 │   └── ...
 │
 │── notebook/
@@ -83,19 +48,31 @@ Autism-Model/
 │── .gitignore
 │── requirements.txt
 │── README.md
-````
+```
 
-## 🚀 Features
+## 🔍 Workflow
+### 1. Exploratory Data Analysis (EDA)
 
-- 🎚️ **Interactive Sliders and Manual Inputs** for eight diabetes related medical features
+- Categorical features: visualized using countplots.
 
-- 🔍 **Hybrid Input Mode:** Use either sidebar sliders or text inputs
+- Numerical features: explored using boxplots for spread and outlier detection.
 
-- 📈 **Real-Time** Prediction using SVM model
+- Target distribution: dataset was imbalanced, requiring oversampling.
 
-- 📊 **Probability Scores** per class (Diabetic / Not Diabetic)
+### 2. Preprocessing
 
-- ⚠️ **Medical Disclaimer Message** for responsible and proper application
+- Encoding: categorical features transformed using LabelEncoder (scikit-learn).
+
+- Resampling: imbalance handled using SMOTE (imblearn.over_sampling.SMOTE).
+
+### 3. Modeling
+
+- Tree-based models were selected due to their interpretability and performance on tabular data:
+    - Decision Tree Classifier
+
+    - Random Forest Classifier
+
+    - XGBoost Classifier
 
 ## ⚙️ Installation
 ### 🔐 Prerequisites
@@ -108,29 +85,50 @@ Autism-Model/
 ### 📦 Setup Guide
 1. Clone this repository
 ```bash
-git clone https://github.com/kamijoseph/diabetes_predictor.git
-cd diabetes_predictor
+git clone https://github.com/kamijoseph/Autism-Model.git
+cd Autism-Model
 ```
 2. Create a new Conda environment
 ```bash
-conda create -n diabetes-predictor python=3.12
+conda create -n Autism_Model python=3.12
 ```
 3. Activate the environment
 ```bash
-conda activate diabetes-predictor
+conda activate Autism-Model
 ```
 4. Install dependencies
 ```bash
 conda install --file requirements.txt
 ```
-5. Run streamlit application
+5. Run the Notebook
 ```bash
-cd app
-streamlit run main.py
+cd notebooks
+jupyter-notebook main.ipynb
 ```
 
 ---
+## Run Inference With Saved Model
+### import pickle
+```bash
+import pickle
+```
+
+### Load model
+```bash
+with open("../models/RandomForest.sav", "rb") as f:
+    model = pickle.load(f)
+```
+
+### Load encoders
+```bash
+with open("models/encoders.pkl", "rb") as f:
+    encoders = pickle.load(f)
+```
+
+### Preprocess new data, then predict
+```bash
+y_pred = model.predict(new_data)
+```
 
 ## 🙋‍♂️ Questions or Feedback?
-
 Feel free to open an issue or reach out if you have suggestions, questions, or ideas to improve this project.
